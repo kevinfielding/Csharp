@@ -26,44 +26,22 @@ namespace PropertiesProjectBrowserOnOff
         {
             Util.LogThreadInfo("Properties On Off");
 
-            // rename all the sheets, but first open a transaction
-            using (Transaction t = new Transaction(doc, "Properties On Off"))
-            {
-                Util.LogThreadInfo("Properties On Off Transaction");
+            // our command is a postable command
 
-                // start a transaction within the valid Revit API context
-                t.Start("Properties On Off");
+            RevitCommandId id_built_in = RevitCommandId.LookupPostableCommandId(PostableCommand.TogglePropertiesPalette);
+            uiApp.PostCommand(id_built_in);                
 
-                // our command is a postable command
-
-                RevitCommandId id_built_in = RevitCommandId.LookupPostableCommandId(PostableCommand.TogglePropertiesPalette);
-                uiApp.PostCommand(id_built_in);                
-
-                t.Commit();
-                t.Dispose();
-            }
         }
 
         public static void ProjectBrowserOnOff(UIApplication uiApp, NewForm ui, Document doc)
         {
             Util.LogThreadInfo("Project Browser On Off");
 
-            // rename all the sheets, but first open a transaction
-            using (Transaction t = new Transaction(doc, "Project Browser On Off"))
-            {
-                Util.LogThreadInfo("Project Browser On Off Transaction");
+            // our command is a postable command
 
-                // start a transaction within the valid Revit API context
-                t.Start("Project Browser On Off");
+            RevitCommandId id_built_in = RevitCommandId.LookupPostableCommandId(PostableCommand.ProjectBrowser);
+            uiApp.PostCommand(id_built_in);
 
-                // our command is a postable command
-
-                RevitCommandId id_built_in = RevitCommandId.LookupPostableCommandId(PostableCommand.ProjectBrowser);
-                uiApp.PostCommand(id_built_in);
-
-                t.Commit();
-                t.Dispose();
-            }
         }
     }
 }
